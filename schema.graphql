@@ -1,5 +1,47 @@
-type ExampleEntity @entity {
+enum CampaignType {
+  General
+  NetworkFee
+  FeeHandlerBRR
+}
+
+type Campaign @entity {
   id: ID!
-  count: BigInt!
-  campaignID: BigInt! # uint256
+
+  type: CampaignType!
+
+  startTimestamp: BigInt!
+
+  endTimestam: BigInt!
+
+  minPercentageInPrecision: BigInt!
+
+  cInPrecision: BigInt!
+
+  tInPrecision: BigInt!
+
+  isCancelled: Boolean!
+}
+
+type Option @entity {
+  id: ID!
+
+  voteCount: BigInt!
+
+  votes: [Vote!]! @derivedFrom(field: "option")
+}
+
+type User @entity {
+  id: ID!
+
+  votes: [Vote!]! @derivedFrom(field: "voter")
+}
+
+type Vote @entity {
+  id: ID!
+
+  option: Option!
+
+  voter: User!
+
+  epoch: BigInt!
 }

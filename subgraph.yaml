@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,9 +8,10 @@ dataSources:
     source:
       address: "0x49bdd8854481005bba4acebabf6e06cd5f6312e9"
       abi: KyberDao
+      startBlock: 10403248
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.2
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
         - CancelledCampaign
